@@ -1,0 +1,131 @@
+#ifndef CAMERA_H
+#define CAMERA_H
+
+#include "hittable.h"
+#include "material.h"
+
+class camera {
+  public:
+    /* Public Camera Parameters Here */
+
+    // Image
+    double aspect_ratio = 1.0;
+    int image_width = 100;        // Rendered image width in pixel count
+    int samples_per_pixel = 10;   // Count of random samples for each pixel
+    int max_depth = 10;           // To avoid stack overflow for reflection
+    double vfov = 90;  // Vertical view angle (field of view)
+    point3 lookfrom = point3(0,0,0);   // Point camera is looking from
+    point3 lookat   = point3(0,0,-1);  // Point camera is looking at
+    vec3   vup      = vec3(0,1,0);     // Camera-relative "up" direction
+
+    void render(const hittable& world) {
+        initialize();
+
+        std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
+
+        for (int j = 0; j < image_height; j++) {
+            std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
+            for (int i = 0; i < image_width; i++) {
+                color pixel_color(0, 0, 0);
+                
+                for(int sample = 0; sample < samples_per_pixel; sample ++) {
+                    ray r = get_ray(i, j);
+                    pixel_color += ray_color(r, max_depth, world);
+                }
+                
+                write_color(std::cout, pixel_color * pixel_samples_scale);
+            }
+        }
+        std::clog << "\rDone.                 \n";
+    }
+
+  private:
+    /* Private Camera Variables Here */
+    int image_height;   // Rendered image height
+    double pixel_samples_scale;  // Color scale factor for a sum of pixel samples
+    point3 camera_center;         // Camera center
+    point3 pixel00_loc;    // Location of pixel 0, 0
+    vec3 pixel_delta_u;  // Offset to pixel to the right
+    vec3 pixel_delta_v;  // Offset to pixel below
+    vec3 u, v, w;              // Camera frame basis vectors
+
+    void initialize() {
+        // Calculate the image height, and ensure that it's at least 1.
+        image_height = int(image_width / aspect_ratio);
+        image_height = (image_height < 1) ? 1 : image_height;
+
+        pixel_samples_scale = 1.0 / samples_per_pixel;
+
+        camera_center = lookfrom;
+
+        // Camera
+        auto focal_length = (lookfrom - lookat).length();
+        auto theta = degrees_to_radians(vfov);
+        auto h = std::tan(theta/2);
+        auto viewport_height = 2 * h * focal_length;
+        auto viewport_width = viewport_height * (double(image_width)/image_height);
+
+        // Calculate the u,v,w unit basis vectors for the camera coordinate frame.
+        w = unit_vector(lookfrom - lookat);
+        u = unit_vector(cross(vup, w));
+        v = cross(w, u);
+
+        // Calculate the vectors across the horizontal and down the vertical viewport edges.
+        vec3 viewport_u = viewport_width * u;    // Vector across viewport horizontal edge
+        vec3 viewport_v = viewport_height * -v;  // Vector down viewport vertical edge
+
+        // Calculate the horizontal and vertical delta vectors from pixel to pixel.
+        pixel_delta_u = viewport_u / image_width;
+        pixel_delta_v = viewport_v / image_height;
+
+        // Calculate the location of the upper left pixel.
+        auto viewport_upper_left = camera_center
+                                - (focal_length * w) - viewport_u/2 - viewport_v/2;
+        pixel00_loc = viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v);        
+    }
+
+    color ray_color(const ray& r, int depth, const hittable& world) const {
+        if (depth <= 0) {
+            return color(0, 0, 0);
+        }
+
+        hit_record rec;
+
+        // 0.001 as if the new point (of intersection with surface) is slightly inside the object 
+        // due to approximation errors so
+        // next hit for the new ray is at t = 0.0000001 for example and it will keep reflecting inside
+        // the object till it become black (shadow acne), so I only take if t >= 0.001
+        if (world.hit(r, interval(0.001, infinity), rec)) {
+            ray scattered;
+            color attenuation;
+
+            // Following may cause stack overflow if it keeps reflecting for too long
+            // 0.5 stand for 50% reflectance of the object
+            // recursive call for reflection
+            if (rec.mat->scatter(r, rec, attenuation, scattered))
+                return attenuation * ray_color(scattered, depth-1, world);
+            return color(0,0,0);
+        }
+
+        vec3 unit_direction = unit_vector(r.direction());
+        auto a = 0.5*(unit_direction.y() + 1.0);
+        return (1.0-a)*color(1.0, 1.0, 1.0) + a*color(0.5, 0.7, 1.0);
+    }
+
+    ray get_ray(int i, int j) {
+        auto offset = sample_square();
+
+        auto pixel_center = pixel00_loc 
+                            + ((i + offset.x()) * pixel_delta_u) 
+                            + ((j + offset.y()) * pixel_delta_v);
+        auto ray_direction = pixel_center - camera_center;
+        return ray(camera_center, ray_direction);
+    }
+
+    vec3 sample_square() const {
+        // Returns the vector to a random point in the [-.5,-.5]-[+.5,+.5] unit square.
+        return vec3(random_double() - 0.5, random_double() - 0.5, 0);
+    }
+};
+
+#endif
