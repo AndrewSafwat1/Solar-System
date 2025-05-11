@@ -11,6 +11,8 @@ class hit_record {
     shared_ptr<material> mat;
     double t;
     bool front_face;
+    double u; // u and v for texture mapping
+    double v;
 
     // To always be againest the incident ray
     void set_face_normal(const ray& r, const vec3& outward_normal) {

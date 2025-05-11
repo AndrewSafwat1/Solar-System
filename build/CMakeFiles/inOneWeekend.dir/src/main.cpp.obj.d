@@ -183,6 +183,21 @@ CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: \
  E:\CSED-2026\CSE-6TH\ semster\Computer\ Graphics\Project\Learning_ray_tracing_vscode\src\camera.h \
  E:\CSED-2026\CSE-6TH\ semster\Computer\ Graphics\Project\Learning_ray_tracing_vscode\src\hittable.h \
  E:\CSED-2026\CSE-6TH\ semster\Computer\ Graphics\Project\Learning_ray_tracing_vscode\src\material.h \
+ E:\CSED-2026\CSE-6TH\ semster\Computer\ Graphics\Project\Learning_ray_tracing_vscode\src\texture.h \
+ E:\CSED-2026\CSE-6TH\ semster\Computer\ Graphics\Project\Learning_ray_tracing_vscode\src\rtw_stb_image.h \
+ E:\CSED-2026\CSE-6TH\ semster\Computer\ Graphics\Project\Learning_ray_tracing_vscode\src\external/stb_image.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdarg.h \
+ C:/msys64/ucrt64/include/stdarg.h \
+ C:/msys64/ucrt64/include/_mingw_stdarg.h \
+ C:/msys64/ucrt64/include/string.h \
+ C:/msys64/ucrt64/include/sec_api/string_s.h \
+ C:/msys64/ucrt64/include/c++/15.1.0/math.h \
+ C:/msys64/ucrt64/include/assert.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdint.h \
+ C:/msys64/ucrt64/include/stdint.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/emmintrin.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/xmmintrin.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mmintrin.h \
  E:\CSED-2026\CSE-6TH\ semster\Computer\ Graphics\Project\Learning_ray_tracing_vscode\src\hittable_list.h \
  C:/msys64/ucrt64/include/c++/15.1.0/vector \
  C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h \

@@ -7,7 +7,9 @@ CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: E:/CSED-2026/CSE-6TH\ semster/Comp
   C:/msys64/ucrt64/include/_mingw_off_t.h \
   C:/msys64/ucrt64/include/_mingw_secapi.h \
   C:/msys64/ucrt64/include/_mingw_stat64.h \
+  C:/msys64/ucrt64/include/_mingw_stdarg.h \
   C:/msys64/ucrt64/include/_timeval.h \
+  C:/msys64/ucrt64/include/assert.h \
   C:/msys64/ucrt64/include/c++/15.1.0/backward/auto_ptr.h \
   C:/msys64/ucrt64/include/c++/15.1.0/backward/binders.h \
   C:/msys64/ucrt64/include/c++/15.1.0/bit \
@@ -108,6 +110,7 @@ CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: E:/CSED-2026/CSE-6TH\ semster/Comp
   C:/msys64/ucrt64/include/c++/15.1.0/iostream \
   C:/msys64/ucrt64/include/c++/15.1.0/istream \
   C:/msys64/ucrt64/include/c++/15.1.0/limits \
+  C:/msys64/ucrt64/include/c++/15.1.0/math.h \
   C:/msys64/ucrt64/include/c++/15.1.0/memory \
   C:/msys64/ucrt64/include/c++/15.1.0/new \
   C:/msys64/ucrt64/include/c++/15.1.0/ostream \
@@ -169,12 +172,16 @@ CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: E:/CSED-2026/CSE-6TH\ semster/Comp
   C:/msys64/ucrt64/include/sdks/_mingw_ddk.h \
   C:/msys64/ucrt64/include/sec_api/stdio_s.h \
   C:/msys64/ucrt64/include/sec_api/stdlib_s.h \
+  C:/msys64/ucrt64/include/sec_api/string_s.h \
   C:/msys64/ucrt64/include/sec_api/sys/timeb_s.h \
   C:/msys64/ucrt64/include/sec_api/wchar_s.h \
   C:/msys64/ucrt64/include/signal.h \
+  C:/msys64/ucrt64/include/stdarg.h \
   C:/msys64/ucrt64/include/stddef.h \
+  C:/msys64/ucrt64/include/stdint.h \
   C:/msys64/ucrt64/include/stdio.h \
   C:/msys64/ucrt64/include/stdlib.h \
+  C:/msys64/ucrt64/include/string.h \
   C:/msys64/ucrt64/include/swprintf.inl \
   C:/msys64/ucrt64/include/sys/timeb.h \
   C:/msys64/ucrt64/include/sys/types.h \
@@ -182,19 +189,27 @@ CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: E:/CSED-2026/CSE-6TH\ semster/Comp
   C:/msys64/ucrt64/include/vadefs.h \
   C:/msys64/ucrt64/include/wchar.h \
   C:/msys64/ucrt64/include/wctype.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/emmintrin.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/limits.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mm_malloc.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mmintrin.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdarg.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stddef.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdint.h \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/syslimits.h \
+  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/xmmintrin.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/camera.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/color.h \
+  E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/external/stb_image.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/hittable.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/hittable_list.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/interval.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/material.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/ray.h \
+  E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/rtw_stb_image.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/rtweekend.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/sphere.h \
+  E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/texture.h \
   E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/vec3.h
 
 
@@ -202,9 +217,7 @@ E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vs
 
 C:/msys64/ucrt64/include/_mingw_off_t.h:
 
-C:/msys64/ucrt64/include/c++/15.1.0/ext/atomicity.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_function.h:
+C:/msys64/ucrt64/include/_mingw_stdarg.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/basic_ios.h:
 
@@ -228,6 +241,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/exception_defines.h:
 
 C:/msys64/ucrt64/include/_timeval.h:
 
+C:/msys64/ucrt64/include/assert.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/bits/atomic_base.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/backward/auto_ptr.h:
@@ -235,10 +250,6 @@ C:/msys64/ucrt64/include/c++/15.1.0/backward/auto_ptr.h:
 C:/msys64/ucrt64/include/c++/15.1.0/bits/new_allocator.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/backward/binders.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/debug/assertions.h:
-
-C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/hash_bytes.h:
 
@@ -362,6 +373,14 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_vector.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_bvector.h:
 
+C:/msys64/ucrt64/include/c++/15.1.0/ext/atomicity.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_function.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/debug/assertions.h:
+
+C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator_base_funcs.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_iterator_base_types.h:
@@ -375,6 +394,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_pair.h:
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_raw_storage_iter.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_tempbuf.h:
+
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/xmmintrin.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/bits/stl_uninitialized.h:
 
@@ -432,6 +453,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/ext/numeric_traits.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/ext/string_conversions.h:
 
+C:/msys64/ucrt64/include/stdint.h:
+
 C:/msys64/ucrt64/include/c++/15.1.0/ext/type_traits.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/initializer_list:
@@ -447,6 +470,8 @@ C:/msys64/ucrt64/include/c++/15.1.0/iostream:
 C:/msys64/ucrt64/include/c++/15.1.0/istream:
 
 C:/msys64/ucrt64/include/c++/15.1.0/limits:
+
+C:/msys64/ucrt64/include/c++/15.1.0/math.h:
 
 C:/msys64/ucrt64/include/c++/15.1.0/memory:
 
@@ -546,15 +571,23 @@ C:/msys64/ucrt64/include/sdks/_mingw_ddk.h:
 
 C:/msys64/ucrt64/include/sec_api/stdio_s.h:
 
+E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/ray.h:
+
+C:/msys64/ucrt64/include/sec_api/string_s.h:
+
 C:/msys64/ucrt64/include/sec_api/sys/timeb_s.h:
 
 C:/msys64/ucrt64/include/signal.h:
+
+C:/msys64/ucrt64/include/stdarg.h:
 
 C:/msys64/ucrt64/include/stddef.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/syslimits.h:
 
 C:/msys64/ucrt64/include/stdio.h:
+
+C:/msys64/ucrt64/include/string.h:
 
 C:/msys64/ucrt64/include/swprintf.inl:
 
@@ -568,22 +601,34 @@ C:/msys64/ucrt64/include/wchar.h:
 
 C:/msys64/ucrt64/include/wctype.h:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/emmintrin.h:
+
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/limits.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mm_malloc.h:
 
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/mmintrin.h:
+
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdarg.h:
+
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stddef.h:
+
+C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.1.0/include/stdint.h:
 
 E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/camera.h:
 
 E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/color.h:
 
+E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/external/stb_image.h:
+
 E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/hittable.h:
 
 E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/interval.h:
 
-E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/ray.h:
+E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/rtw_stb_image.h:
 
 E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/sphere.h:
+
+E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/texture.h:
 
 E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/vec3.h:
