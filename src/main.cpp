@@ -116,48 +116,64 @@ void earth() {
 void solar_system() {
     hittable_list world;
 
+    // Create a bright yellow-orange light for the sun
     auto sun_texture = make_shared<image_texture>("sunmap.png");
-    auto sun_surface = make_shared<lambertian>(sun_texture);
+    auto sun_surface = make_shared<diffuse_light>(sun_texture); // Bright yellow-orange light
     auto sun = make_shared<sphere>(point3(0,0,0), 285, sun_surface);
     world.add(sun);
 
+    // Add random stars in the background
+    auto star_material = make_shared<diffuse_light>(color(1.0, 1.0, 1.0));
+    for (int i = 0; i < 1000; i++) {
+        // Random position in a large sphere around the solar system
+        double theta = random_double(0, 2*pi);
+        double phi = random_double(0, pi);
+        double r = random_double(3000, 5000); // Distance from center
+        
+        double x = r * sin(phi) * cos(theta);
+        double y = r * sin(phi) * sin(theta);
+        double z = r * cos(phi);
+        
+        world.add(make_shared<sphere>(point3(x,y,z), 10, star_material));
+    }
+
     auto mercury_texture = make_shared<image_texture>("mercurymap.jpg");
-    auto mercury_surface = make_shared<lambertian>(mercury_texture);
+    auto mercury_surface = make_shared<diffuse_light>(mercury_texture);
     auto mercury = make_shared<sphere>(point3(400, 20, 0), 40, mercury_surface);
     world.add(mercury);
     
     auto venus_texture = make_shared<image_texture>("venusmap.jpg");
-    auto venus_surface = make_shared<lambertian>(venus_texture);
+    auto venus_surface = make_shared<diffuse_light>(venus_texture);
     auto venus = make_shared<sphere>(point3(700, -30, 0), 60, venus_surface);
     world.add(venus);
 
     auto earth_texture = make_shared<image_texture>("earthmap1k.jpg");
-    auto earth_surface = make_shared<lambertian>(earth_texture);
+    auto earth_surface = make_shared<diffuse_light>(earth_texture);
     auto earth = make_shared<sphere>(point3(1000, 25, 0), 80, earth_surface);
     world.add(earth);
 
     auto mars_texture = make_shared<image_texture>("marsmap.jpg");
-    auto mars_surface = make_shared<lambertian>(mars_texture);
+    auto mars_surface = make_shared<diffuse_light>(mars_texture);
     auto mars = make_shared<sphere>(point3(1300, -20, 0), 40, mars_surface);
     world.add(mars);
 
     auto jupiter_texture = make_shared<image_texture>("jupitermap.jpg");
-    auto jupiter_surface = make_shared<lambertian>(jupiter_texture);
+    auto jupiter_surface = make_shared<diffuse_light>(jupiter_texture);
     auto jupiter = make_shared<sphere>(point3(1700, 30, 0), 100, jupiter_surface);
     world.add(jupiter);
 
     auto saturn_texture = make_shared<image_texture>("saturnmap.jpg");
-    auto saturn_surface = make_shared<lambertian>(saturn_texture);
+    auto saturn_surface = make_shared<diffuse_light>(saturn_texture);
     auto saturn = make_shared<sphere>(point3(2100, -25, 0), 90, saturn_surface);
     world.add(saturn);
 
     auto uranus_texture = make_shared<image_texture>("uranusmap.jpg");
-    auto uranus_surface = make_shared<lambertian>(uranus_texture);
+    auto uranus_surface = make_shared<diffuse_light>(uranus_texture);
     auto uranus = make_shared<sphere>(point3(2400, 15, 0), 50, uranus_surface);
     world.add(uranus);
 
     auto neptune_texture = make_shared<image_texture>("naptunemap.jpg");
-    auto neptune_surface = make_shared<lambertian>(neptune_texture);
+    auto neptune_surface = make_shared<diffuse_light>(neptune_texture);
     auto neptune = make_shared<sphere>(point3(2700, -10, 0), 50, neptune_surface);
     world.add(neptune);
 
@@ -165,11 +181,11 @@ void solar_system() {
 
     cam.aspect_ratio = 16.0 / 9.0;
     cam.image_width = 500;
-    cam.samples_per_pixel = 20;
+    cam.samples_per_pixel = 10;
     cam.max_depth = 10;
 
-    cam.vfov = 90;
-    cam.lookfrom = point3(1350, 0, 1200);    // Pull back along Z axis, centered on system
+    cam.vfov = 45;
+    cam.lookfrom = point3(1350, 0, 2000);    // Pull back along Z axis, centered on system
     cam.lookat = point3(1350, 0, 0);         // Looking toward center of x-axis line
     cam.vup = vec3(0, 1, 0);
 

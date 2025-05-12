@@ -107,18 +107,18 @@ class camera {
         if (world.hit(r, interval(0.001, infinity), rec)) {
             ray scattered;
             color attenuation;
+            color emitted = rec.mat->emitted(rec.u, rec.v, rec.p);
 
             // Following may cause stack overflow if it keeps reflecting for too long
             // 0.5 stand for 50% reflectance of the object
             // recursive call for reflection
             if (rec.mat->scatter(r, rec, attenuation, scattered))
-                return attenuation * ray_color(scattered, depth-1, world);
-            return color(0,0,0);
+                return emitted + attenuation * ray_color(scattered, depth-1, world);
+            return emitted;
         }
 
-        vec3 unit_direction = unit_vector(r.direction());
-        auto a = 0.5*(unit_direction.y() + 1.0);
-        return (1.0-a)*color(1.0, 1.0, 1.0) + a*color(0.5, 0.7, 1.0);
+        // Return black for space (no sky color)
+        return color(0,0,0);
     }
 
     ray get_ray(int i, int j) const {
