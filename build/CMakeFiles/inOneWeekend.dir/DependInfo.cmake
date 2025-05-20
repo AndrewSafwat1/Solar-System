@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "E:/CSED-2026/CSE-6TH semster/Computer Graphics/Project/Learning_ray_tracing_vscode/src/main.cpp" "CMakeFiles/inOneWeekend.dir/src/main.cpp.obj" "gcc" "CMakeFiles/inOneWeekend.dir/src/main.cpp.obj.d"
+  "D:/Koleya/CSED Year 3 (2024-2025)/2nd Semester - Spring 2025/Computer Graphics/Project/Solar-System/src/main.cpp" "CMakeFiles/inOneWeekend.dir/src/main.cpp.obj" "gcc" "CMakeFiles/inOneWeekend.dir/src/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

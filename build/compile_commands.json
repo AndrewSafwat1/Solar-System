@@ -1,8 +1,8 @@
 [
 {
-  "directory": "E:/CSED-2026/CSE-6TH semster/Computer Graphics/Project/Learning_ray_tracing_vscode/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\inOneWeekend.dir\\src\\main.cpp.obj -c \"E:\\CSED-2026\\CSE-6TH semster\\Computer Graphics\\Project\\Learning_ray_tracing_vscode\\src\\main.cpp\"",
-  "file": "E:/CSED-2026/CSE-6TH semster/Computer Graphics/Project/Learning_ray_tracing_vscode/src/main.cpp",
+  "directory": "D:/Koleya/CSED Year 3 (2024-2025)/2nd Semester - Spring 2025/Computer Graphics/Project/Solar-System/build",
+  "command": "C:\\PROGRA~1\\CODEBL~1\\MinGW\\bin\\G__~1.EXE   -g -std=gnu++17 -o CMakeFiles\\inOneWeekend.dir\\src\\main.cpp.obj -c \"D:\\Koleya\\CSED Year 3 (2024-2025)\\2nd Semester - Spring 2025\\Computer Graphics\\Project\\Solar-System\\src\\main.cpp\"",
+  "file": "D:/Koleya/CSED Year 3 (2024-2025)/2nd Semester - Spring 2025/Computer Graphics/Project/Solar-System/src/main.cpp",
   "output": "CMakeFiles/inOneWeekend.dir/src/main.cpp.obj"
 }
 ]

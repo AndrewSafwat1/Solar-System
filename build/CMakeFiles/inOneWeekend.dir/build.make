@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode"
+CMAKE_SOURCE_DIR = "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\build"
+CMAKE_BINARY_DIR = "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/inOneWeekend.dir/depend.make
@@ -72,18 +72,18 @@ CMakeFiles/inOneWeekend.dir/codegen:
 .PHONY : CMakeFiles/inOneWeekend.dir/codegen
 
 CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: CMakeFiles/inOneWeekend.dir/flags.make
-CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: E:/CSED-2026/CSE-6TH\ semster/Computer\ Graphics/Project/Learning_ray_tracing_vscode/src/main.cpp
+CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: D:/Koleya/CSED\ Year\ 3\ (2024-2025)/2nd\ Semester\ -\ Spring\ 2025/Computer\ Graphics/Project/Solar-System/src/main.cpp
 CMakeFiles/inOneWeekend.dir/src/main.cpp.obj: CMakeFiles/inOneWeekend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/inOneWeekend.dir/src/main.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/inOneWeekend.dir/src/main.cpp.obj -MF CMakeFiles\inOneWeekend.dir\src\main.cpp.obj.d -o CMakeFiles\inOneWeekend.dir\src\main.cpp.obj -c "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\src\main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/inOneWeekend.dir/src/main.cpp.obj"
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/inOneWeekend.dir/src/main.cpp.obj -MF CMakeFiles\inOneWeekend.dir\src\main.cpp.obj.d -o CMakeFiles\inOneWeekend.dir\src\main.cpp.obj -c "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\src\main.cpp"
 
 CMakeFiles/inOneWeekend.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/inOneWeekend.dir/src/main.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\src\main.cpp" > CMakeFiles\inOneWeekend.dir\src\main.cpp.i
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\src\main.cpp" > CMakeFiles\inOneWeekend.dir\src\main.cpp.i
 
 CMakeFiles/inOneWeekend.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/inOneWeekend.dir/src/main.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\src\main.cpp" -o CMakeFiles\inOneWeekend.dir\src\main.cpp.s
+	C:\PROGRA~1\CODEBL~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\src\main.cpp" -o CMakeFiles\inOneWeekend.dir\src\main.cpp.s
 
 # Object files for target inOneWeekend
 inOneWeekend_OBJECTS = \
@@ -97,7 +97,7 @@ inOneWeekend.exe: CMakeFiles/inOneWeekend.dir/build.make
 inOneWeekend.exe: CMakeFiles/inOneWeekend.dir/linkLibs.rsp
 inOneWeekend.exe: CMakeFiles/inOneWeekend.dir/objects1.rsp
 inOneWeekend.exe: CMakeFiles/inOneWeekend.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable inOneWeekend.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\build\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable inOneWeekend.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\inOneWeekend.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -109,6 +109,6 @@ CMakeFiles/inOneWeekend.dir/clean:
 .PHONY : CMakeFiles/inOneWeekend.dir/clean
 
 CMakeFiles/inOneWeekend.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode" "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode" "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\build" "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\build" "E:\CSED-2026\CSE-6TH semster\Computer Graphics\Project\Learning_ray_tracing_vscode\build\CMakeFiles\inOneWeekend.dir\DependInfo.cmake" "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System" "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System" "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\build" "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\build" "D:\Koleya\CSED Year 3 (2024-2025)\2nd Semester - Spring 2025\Computer Graphics\Project\Solar-System\build\CMakeFiles\inOneWeekend.dir\DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/inOneWeekend.dir/depend
 

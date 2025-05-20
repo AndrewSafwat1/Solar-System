@@ -6,7 +6,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/4.0.1/CMakeSystem.cmake"
+			"path" : "build/CMakeFiles/4.0.2/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -20,11 +20,11 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/4.0.1/CMakeCCompiler.cmake"
+			"path" : "build/CMakeFiles/4.0.2/CMakeCCompiler.cmake"
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/4.0.1/CMakeCXXCompiler.cmake"
+			"path" : "build/CMakeFiles/4.0.2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -88,7 +88,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/4.0.1/CMakeRCCompiler.cmake"
+			"path" : "build/CMakeFiles/4.0.2/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -219,8 +219,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "E:/CSED-2026/CSE-6TH semster/Computer Graphics/Project/Learning_ray_tracing_vscode/build",
-		"source" : "E:/CSED-2026/CSE-6TH semster/Computer Graphics/Project/Learning_ray_tracing_vscode"
+		"build" : "D:/Koleya/CSED Year 3 (2024-2025)/2nd Semester - Spring 2025/Computer Graphics/Project/Solar-System/build",
+		"source" : "D:/Koleya/CSED Year 3 (2024-2025)/2nd Semester - Spring 2025/Computer Graphics/Project/Solar-System"
 	},
 	"version" : 
 	{

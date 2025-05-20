@@ -39,11 +39,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake"
   "C:/Program Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake"
-  "E:/CSED-2026/CSE-6TH semster/Computer Graphics/Project/Learning_ray_tracing_vscode/CMakeLists.txt"
-  "CMakeFiles/4.0.1/CMakeCCompiler.cmake"
-  "CMakeFiles/4.0.1/CMakeCXXCompiler.cmake"
-  "CMakeFiles/4.0.1/CMakeRCCompiler.cmake"
-  "CMakeFiles/4.0.1/CMakeSystem.cmake"
+  "D:/Koleya/CSED Year 3 (2024-2025)/2nd Semester - Spring 2025/Computer Graphics/Project/Solar-System/CMakeLists.txt"
+  "CMakeFiles/4.0.2/CMakeCCompiler.cmake"
+  "CMakeFiles/4.0.2/CMakeCXXCompiler.cmake"
+  "CMakeFiles/4.0.2/CMakeRCCompiler.cmake"
+  "CMakeFiles/4.0.2/CMakeSystem.cmake"
   )
 
 # The corresponding makefile is:
