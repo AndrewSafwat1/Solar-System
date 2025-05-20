@@ -1,0 +1,10 @@
+^C:\USERS\ARMIA\DOCUMENTS\GITHUB\SOLAR-SYSTEM\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Armia/Documents/GitHub/Solar-System -BC:/Users/Armia/Documents/GitHub/Solar-System/build --check-stamp-file C:/Users/Armia/Documents/GitHub/Solar-System/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
