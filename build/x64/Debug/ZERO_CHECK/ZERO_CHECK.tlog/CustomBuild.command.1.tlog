@@ -1,0 +1,10 @@
+^C:\USERS\ARMIA\DOCUMENTS\GITHUB\SOLAR-SYSTEM\BUILD\CMAKEFILES\DA77C51D83D10F12680F0FA0E8F413EB\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Armia/Documents/GitHub/Solar-System -BC:/Users/Armia/Documents/GitHub/Solar-System/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Armia/Documents/GitHub/Solar-System/build/RayTracer.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

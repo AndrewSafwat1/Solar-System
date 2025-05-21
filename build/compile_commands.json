@@ -1,8 +1,0 @@
-[
-{
-  "directory": "E:/CSED-2026/CSE-6TH semster/Computer Graphics/Project/Learning_ray_tracing_vscode/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\inOneWeekend.dir\\src\\main.cpp.obj -c \"E:\\CSED-2026\\CSE-6TH semster\\Computer Graphics\\Project\\Learning_ray_tracing_vscode\\src\\main.cpp\"",
-  "file": "E:/CSED-2026/CSE-6TH semster/Computer Graphics/Project/Learning_ray_tracing_vscode/src/main.cpp",
-  "output": "CMakeFiles/inOneWeekend.dir/src/main.cpp.obj"
-}
-]
