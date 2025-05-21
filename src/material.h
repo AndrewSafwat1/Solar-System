@@ -39,25 +39,21 @@ class diffuse_light : public material {
 
 class lambertian : public material {
   public:
-    // albedo stands for whiteness
-    lambertian(const color& albedo) : tex(make_shared<solid_color>(albedo)) {}
-    lambertian(shared_ptr<texture> tex) : tex(tex) {}
+    lambertian(shared_ptr<texture> a) : albedo(a) {}
+    ~lambertian() override = default;
 
-    bool scatter(const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered)
-    const override {
-        auto scatter_direction = rec.normal + random_unit_vector();
-
-        if(scatter_direction.near_zero()) {
+    bool scatter(const ray& r_in, const hit_record& rec, color& attenuation, ray& scattered) const override {
+        vec3 scatter_direction = rec.normal + random_unit_vector();
+        // Catch degenerate scatter direction
+        if (scatter_direction.near_zero())
             scatter_direction = rec.normal;
-        }
-
         scattered = ray(rec.p, scatter_direction);
-        attenuation = tex->value(rec.u, rec.v, rec.p);
+        attenuation = albedo->value(rec.u, rec.v, rec.p);
         return true;
     }
 
   private:
-    shared_ptr<texture> tex;
+    shared_ptr<texture> albedo;
 };
 
 class metal : public material {

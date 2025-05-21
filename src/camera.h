@@ -20,6 +20,7 @@ class camera {
 
     double defocus_angle = 0;  // Variation angle of rays through each pixel
     double focus_dist = 10;    // Distance from camera lookfrom point to plane of perfect focus
+    color  background;               // Scene background color
 
     void render(const hittable& world) {
         initialize();
@@ -94,31 +95,26 @@ class camera {
     }
 
     color ray_color(const ray& r, int depth, const hittable& world) const {
-        if (depth <= 0) {
-            return color(0, 0, 0);
-        }
+        // If we've exceeded the ray bounce limit, no more light is gathered.
+        if (depth <= 0)
+            return color(0,0,0);
 
         hit_record rec;
 
-        // 0.001 as if the new point (of intersection with surface) is slightly inside the object 
-        // due to approximation errors so
-        // next hit for the new ray is at t = 0.0000001 for example and it will keep reflecting inside
-        // the object till it become black (shadow acne), so I only take if t >= 0.001
-        if (world.hit(r, interval(0.001, infinity), rec)) {
-            ray scattered;
-            color attenuation;
-            color emitted = rec.mat->emitted(rec.u, rec.v, rec.p);
+        // If the ray hits nothing, return the background color.
+        if (!world.hit(r, interval(0.001, infinity), rec))
+            return background;
 
-            // Following may cause stack overflow if it keeps reflecting for too long
-            // 0.5 stand for 50% reflectance of the object
-            // recursive call for reflection
-            if (rec.mat->scatter(r, rec, attenuation, scattered))
-                return emitted + attenuation * ray_color(scattered, depth-1, world);
-            return emitted;
-        }
+        ray scattered;
+        color attenuation;
+        color color_from_emission = rec.mat->emitted(rec.u, rec.v, rec.p);
 
-        // Return black for space (no sky color)
-        return color(0,0,0);
+        if (!rec.mat->scatter(r, rec, attenuation, scattered))
+            return color_from_emission;
+
+        color color_from_scatter = attenuation * ray_color(scattered, depth-1, world);
+
+        return color_from_emission + color_from_scatter;
     }
 
     ray get_ray(int i, int j) const {

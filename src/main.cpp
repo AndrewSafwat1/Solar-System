@@ -6,120 +6,120 @@
 #include "sphere.h"
 #include "texture.h"
 
-void bouncing_spheres() {
-    hittable_list world;
+// void bouncing_spheres() {
+//     hittable_list world;
 
-    auto checker = make_shared<checker_texture>(0.32, color(.2, .3, .1), color(.9, .9, .9));
-    world.add(make_shared<sphere>(point3(0,-1000,0), 1000, make_shared<lambertian>(checker)));
+//     auto checker = make_shared<checker_texture>(0.32, color(.2, .3, .1), color(.9, .9, .9));
+//     world.add(make_shared<sphere>(point3(0,-1000,0), 1000, make_shared<lambertian>(checker)));
 
-    for (int a = -11; a < 11; a++) {
-        for (int b = -11; b < 11; b++) {
-            auto choose_mat = random_double();
-            point3 center(a + 0.9*random_double(), 0.2, b + 0.9*random_double());
+//     for (int a = -11; a < 11; a++) {
+//         for (int b = -11; b < 11; b++) {
+//             auto choose_mat = random_double();
+//             point3 center(a + 0.9*random_double(), 0.2, b + 0.9*random_double());
 
-            if ((center - point3(4, 0.2, 0)).length() > 0.9) {
-                shared_ptr<material> sphere_material;
+//             if ((center - point3(4, 0.2, 0)).length() > 0.9) {
+//                 shared_ptr<material> sphere_material;
 
-                if (choose_mat < 0.8) {
-                    // diffuse
-                    auto albedo = color::random() * color::random();
-                    sphere_material = make_shared<lambertian>(albedo);
-                    world.add(make_shared<sphere>(center, 0.2, sphere_material));
-                } else if (choose_mat < 0.95) {
-                    // metal
-                    auto albedo = color::random(0.5, 1);
-                    auto fuzz = random_double(0, 0.5);
-                    sphere_material = make_shared<metal>(albedo, fuzz);
-                    world.add(make_shared<sphere>(center, 0.2, sphere_material));
-                } else {
-                    // glass
-                    sphere_material = make_shared<dielectric>(1.5);
-                    world.add(make_shared<sphere>(center, 0.2, sphere_material));
-                }
-            }
-        }
-    }
+//                 if (choose_mat < 0.8) {
+//                     // diffuse
+//                     auto albedo = color::random() * color::random();
+//                     sphere_material = make_shared<lambertian>(albedo);
+//                     world.add(make_shared<sphere>(center, 0.2, sphere_material));
+//                 } else if (choose_mat < 0.95) {
+//                     // metal
+//                     auto albedo = color::random(0.5, 1);
+//                     auto fuzz = random_double(0, 0.5);
+//                     sphere_material = make_shared<metal>(albedo, fuzz);
+//                     world.add(make_shared<sphere>(center, 0.2, sphere_material));
+//                 } else {
+//                     // glass
+//                     sphere_material = make_shared<dielectric>(1.5);
+//                     world.add(make_shared<sphere>(center, 0.2, sphere_material));
+//                 }
+//             }
+//         }
+//     }
 
-    auto material1 = make_shared<dielectric>(1.5);
-    world.add(make_shared<sphere>(point3(0, 1, 0), 1.0, material1));
+//     auto material1 = make_shared<dielectric>(1.5);
+//     world.add(make_shared<sphere>(point3(0, 1, 0), 1.0, material1));
 
-    auto material2 = make_shared<lambertian>(color(0.4, 0.2, 0.1));
-    world.add(make_shared<sphere>(point3(-4, 1, 0), 1.0, material2));
+//     // auto material2 = make_shared<lambertian>(color(0.4, 0.2, 0.1));
+//     // world.add(make_shared<sphere>(point3(-4, 1, 0), 1.0, material2));
 
-    auto material3 = make_shared<metal>(color(0.7, 0.6, 0.5), 0.0);
-    world.add(make_shared<sphere>(point3(4, 1, 0), 1.0, material3));
+//     auto material3 = make_shared<metal>(color(0.7, 0.6, 0.5), 0.0);
+//     world.add(make_shared<sphere>(point3(4, 1, 0), 1.0, material3));
 
-    camera cam;
+//     camera cam;
 
-    cam.aspect_ratio = 16.0 / 9.0;
-    cam.image_width = 500;
-    cam.samples_per_pixel = 10;
-    cam.max_depth = 10;
-    cam.vfov = 20;
-    cam.lookfrom = point3(13,2,3);
-    cam.lookat = point3(0,0,0);
-    cam.vup = vec3(0,1,0);
+//     cam.aspect_ratio = 16.0 / 9.0;
+//     cam.image_width = 500;
+//     cam.samples_per_pixel = 10;
+//     cam.max_depth = 10;
+//     cam.vfov = 20;
+//     cam.lookfrom = point3(13,2,3);
+//     cam.lookat = point3(0,0,0);
+//     cam.vup = vec3(0,1,0);
 
-    cam.defocus_angle = 0.6;
-    cam.focus_dist = 10.0;
+//     cam.defocus_angle = 0.6;
+//     cam.focus_dist = 10.0;
 
-    cam.render(world);
-}
+//     cam.render(world);
+// }
 
-void checkered_spheres() {
-    hittable_list world;
+// void checkered_spheres() {
+//     hittable_list world;
 
-    auto checker = make_shared<checker_texture>(0.32, color(.2, .3, .1), color(.9, .9, .9));
+//     auto checker = make_shared<checker_texture>(0.32, color(.2, .3, .1), color(.9, .9, .9));
 
-    world.add(make_shared<sphere>(point3(0,-10, 0), 10, make_shared<lambertian>(checker)));
-    world.add(make_shared<sphere>(point3(0, 10, 0), 10, make_shared<lambertian>(checker)));
+//     world.add(make_shared<sphere>(point3(0,-10, 0), 10, make_shared<lambertian>(checker)));
+//     world.add(make_shared<sphere>(point3(0, 10, 0), 10, make_shared<lambertian>(checker)));
 
-    camera cam;
+//     camera cam;
 
-    cam.aspect_ratio = 16.0 / 9.0;
-    cam.image_width = 400;
-    cam.samples_per_pixel = 10;
-    cam.max_depth = 10;
+//     cam.aspect_ratio = 16.0 / 9.0;
+//     cam.image_width = 400;
+//     cam.samples_per_pixel = 10;
+//     cam.max_depth = 10;
 
-    cam.vfov = 20;
-    cam.lookfrom = point3(13,2,3);
-    cam.lookat = point3(0,0,0);
-    cam.vup = vec3(0,1,0);
+//     cam.vfov = 20;
+//     cam.lookfrom = point3(13,2,3);
+//     cam.lookat = point3(0,0,0);
+//     cam.vup = vec3(0,1,0);
 
-    cam.defocus_angle = 0;
+//     cam.defocus_angle = 0;
 
-    cam.render(world);
-}
+//     cam.render(world);
+// }
 
-void earth() {
-    auto earth_texture = make_shared<image_texture>("earthmap1k.jpg");
-    auto earth_surface = make_shared<lambertian>(earth_texture);
-    auto globe = make_shared<sphere>(point3(0,0,0), 2, earth_surface);
+// void earth() {
+//     auto earth_texture = make_shared<image_texture>("earthmap1k.jpg");
+//     auto earth_surface = make_shared<lambertian>(earth_texture);
+//     auto globe = make_shared<sphere>(point3(0,0,0), 2, earth_surface);
 
-    camera cam;
+//     camera cam;
 
-    cam.aspect_ratio = 16.0 / 9.0;
-    cam.image_width = 400;
-    cam.samples_per_pixel = 10;
-    cam.max_depth = 10;
+//     cam.aspect_ratio = 16.0 / 9.0;
+//     cam.image_width = 400;
+//     cam.samples_per_pixel = 10;
+//     cam.max_depth = 10;
 
-    cam.vfov = 20;
-    cam.lookfrom = point3(0,0,12);
-    cam.lookat = point3(0,0,0);
-    cam.vup = vec3(0,1,0);
+//     cam.vfov = 45;
+//     cam.lookfrom = point3(0,0,12);
+//     cam.lookat = point3(0,0,0);
+//     cam.vup = vec3(0,1,0);
 
-    cam.defocus_angle = 0;
+//     cam.defocus_angle = 0;
 
-    cam.render(hittable_list(globe));
-}
+//     cam.render(hittable_list(globe));
+// }
 
 void solar_system() {
     hittable_list world;
 
     // Create a bright yellow-orange light for the sun
-    auto sun_texture = make_shared<image_texture>("sunmap.png");
+    auto sun_texture = make_shared<image_texture>("sunmap.png", 20.0);
     auto sun_surface = make_shared<diffuse_light>(sun_texture); // Bright yellow-orange light
-    auto sun = make_shared<sphere>(point3(0,0,0), 285, sun_surface);
+    auto sun = make_shared<sphere>(point3(-1200,0,0), 1100, sun_surface);
     world.add(sun);
 
     // Add random stars in the background
@@ -138,43 +138,43 @@ void solar_system() {
     }
 
     auto mercury_texture = make_shared<image_texture>("mercurymap.jpg");
-    auto mercury_surface = make_shared<diffuse_light>(mercury_texture);
-    auto mercury = make_shared<sphere>(point3(400, 20, 0), 40, mercury_surface);
+    auto mercury_surface = make_shared<lambertian>(mercury_texture);
+    auto mercury = make_shared<sphere>(point3(200, 20, 0), 40, mercury_surface);
     world.add(mercury);
     
     auto venus_texture = make_shared<image_texture>("venusmap.jpg");
-    auto venus_surface = make_shared<diffuse_light>(venus_texture);
-    auto venus = make_shared<sphere>(point3(700, -30, 0), 60, venus_surface);
+    auto venus_surface = make_shared<lambertian>(venus_texture);
+    auto venus = make_shared<sphere>(point3(380, -30, -50), 95, venus_surface);
     world.add(venus);
 
     auto earth_texture = make_shared<image_texture>("earthmap1k.jpg");
-    auto earth_surface = make_shared<diffuse_light>(earth_texture);
-    auto earth = make_shared<sphere>(point3(1000, 25, 0), 80, earth_surface);
+    auto earth_surface = make_shared<lambertian>(earth_texture);
+    auto earth = make_shared<sphere>(point3(730, 25, 150), 100, earth_surface);
     world.add(earth);
 
     auto mars_texture = make_shared<image_texture>("marsmap.jpg");
-    auto mars_surface = make_shared<diffuse_light>(mars_texture);
-    auto mars = make_shared<sphere>(point3(1300, -20, 0), 40, mars_surface);
+    auto mars_surface = make_shared<lambertian>(mars_texture);
+    auto mars = make_shared<sphere>(point3(920, -20, 0), 85, mars_surface);
     world.add(mars);
 
     auto jupiter_texture = make_shared<image_texture>("jupitermap.jpg");
-    auto jupiter_surface = make_shared<diffuse_light>(jupiter_texture);
-    auto jupiter = make_shared<sphere>(point3(1700, 30, 0), 100, jupiter_surface);
+    auto jupiter_surface = make_shared<lambertian>(jupiter_texture);
+    auto jupiter = make_shared<sphere>(point3(1320, 30, 0), 240, jupiter_surface);
     world.add(jupiter);
 
     auto saturn_texture = make_shared<image_texture>("saturnmap.jpg");
-    auto saturn_surface = make_shared<diffuse_light>(saturn_texture);
-    auto saturn = make_shared<sphere>(point3(2100, -25, 0), 90, saturn_surface);
+    auto saturn_surface = make_shared<lambertian>(saturn_texture);
+    auto saturn = make_shared<sphere>(point3(1820, -25, 0), 210, saturn_surface);
     world.add(saturn);
 
     auto uranus_texture = make_shared<image_texture>("uranusmap.jpg");
-    auto uranus_surface = make_shared<diffuse_light>(uranus_texture);
-    auto uranus = make_shared<sphere>(point3(2400, 15, 0), 50, uranus_surface);
+    auto uranus_surface = make_shared<lambertian>(uranus_texture);
+    auto uranus = make_shared<sphere>(point3(2220, 15, 100), 150, uranus_surface);
     world.add(uranus);
 
     auto neptune_texture = make_shared<image_texture>("naptunemap.jpg");
-    auto neptune_surface = make_shared<diffuse_light>(neptune_texture);
-    auto neptune = make_shared<sphere>(point3(2700, -10, 0), 50, neptune_surface);
+    auto neptune_surface = make_shared<lambertian>(neptune_texture);
+    auto neptune = make_shared<sphere>(point3(2770, -10, -200), 130, neptune_surface);
     world.add(neptune);
 
     camera cam;
@@ -182,7 +182,8 @@ void solar_system() {
     cam.aspect_ratio = 16.0 / 9.0;
     cam.image_width = 500;
     cam.samples_per_pixel = 10;
-    cam.max_depth = 10;
+    cam.max_depth = 50;
+    cam.background = color(0,0,0);
 
     cam.vfov = 45;
     cam.lookfrom = point3(1350, 0, 2000);    // Pull back along Z axis, centered on system
@@ -195,9 +196,9 @@ void solar_system() {
 
 int main() {
     switch (4) {
-        case 1: bouncing_spheres(); break;
-        case 2: checkered_spheres(); break;
-        case 3: earth(); break;
+        // case 1: bouncing_spheres(); break;
+        // case 2: checkered_spheres(); break;
+        // case 3: earth(); break;
         case 4: solar_system(); break;
     }
 }
