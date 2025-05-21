@@ -6,112 +6,49 @@
 #include "sphere.h"
 #include "texture.h"
 
-// void bouncing_spheres() {
-//     hittable_list world;
+#define M_PI 3.14159265358979323846
 
-//     auto checker = make_shared<checker_texture>(0.32, color(.2, .3, .1), color(.9, .9, .9));
-//     world.add(make_shared<sphere>(point3(0,-1000,0), 1000, make_shared<lambertian>(checker)));
+long current_time = 2000;
 
-//     for (int a = -11; a < 11; a++) {
-//         for (int b = -11; b < 11; b++) {
-//             auto choose_mat = random_double();
-//             point3 center(a + 0.9*random_double(), 0.2, b + 0.9*random_double());
 
-//             if ((center - point3(4, 0.2, 0)).length() > 0.9) {
-//                 shared_ptr<material> sphere_material;
+struct Orbit {
+    double initial_x; 
+    double initial_y;   
+    double initial_z;
+};
 
-//                 if (choose_mat < 0.8) {
-//                     // diffuse
-//                     auto albedo = color::random() * color::random();
-//                     sphere_material = make_shared<lambertian>(albedo);
-//                     world.add(make_shared<sphere>(center, 0.2, sphere_material));
-//                 } else if (choose_mat < 0.95) {
-//                     // metal
-//                     auto albedo = color::random(0.5, 1);
-//                     auto fuzz = random_double(0, 0.5);
-//                     sphere_material = make_shared<metal>(albedo, fuzz);
-//                     world.add(make_shared<sphere>(center, 0.2, sphere_material));
-//                 } else {
-//                     // glass
-//                     sphere_material = make_shared<dielectric>(1.5);
-//                     world.add(make_shared<sphere>(center, 0.2, sphere_material));
-//                 }
-//             }
-//         }
-//     }
+const double SUN_X = -1200, SUN_Y = 0, SUN_Z = 0;
 
-//     auto material1 = make_shared<dielectric>(1.5);
-//     world.add(make_shared<sphere>(point3(0, 1, 0), 1.0, material1));
 
-//     // auto material2 = make_shared<lambertian>(color(0.4, 0.2, 0.1));
-//     // world.add(make_shared<sphere>(point3(-4, 1, 0), 1.0, material2));
+Orbit mercury_orbit = { -400, 0, 0.0 };
+Orbit venus_orbit   = { -220, 0, 0 };
+Orbit earth_orbit   = { 30, 0, 0 };
+Orbit mars_orbit    = { 320, 0, 0.0 };
+Orbit jupiter_orbit = { 720, 0, 0.0 };
+Orbit saturn_orbit  = { 1320, 0, 0.0 };
+Orbit uranus_orbit  = { 1820, 0, 0 };
+Orbit neptune_orbit = { 2270, 0, 0 };
 
-//     auto material3 = make_shared<metal>(color(0.7, 0.6, 0.5), 0.0);
-//     world.add(make_shared<sphere>(point3(4, 1, 0), 1.0, material3));
+point3 orbit_pos(const Orbit& o, double t) {
+    // Calculate the radius and initial angle from the initial position (relative to sun)
+    double dx = o.initial_x - SUN_X;
+    double dz = o.initial_z - SUN_Z;
+    double radius = sqrt(dx * dx + dz * dz);
+    double initial_angle = atan2(dz, dx);
 
-//     camera cam;
+    // Define an orbital period (in arbitrary time units) based on radius
+    double period = 500.0 + radius * 0.5;
 
-//     cam.aspect_ratio = 16.0 / 9.0;
-//     cam.image_width = 500;
-//     cam.samples_per_pixel = 10;
-//     cam.max_depth = 10;
-//     cam.vfov = 20;
-//     cam.lookfrom = point3(13,2,3);
-//     cam.lookat = point3(0,0,0);
-//     cam.vup = vec3(0,1,0);
+    // Calculate current angle based on time and period
+    double angle = initial_angle + 2 * M_PI * (t / period);
 
-//     cam.defocus_angle = 0.6;
-//     cam.focus_dist = 10.0;
+    // Calculate new position in the XZ plane, keep Y constant, and offset by sun's position
+    double x = SUN_X + radius * cos(angle);
+    double z = SUN_Z + radius * sin(angle);
+    double y = o.initial_y + SUN_Y;
 
-//     cam.render(world);
-// }
-
-// void checkered_spheres() {
-//     hittable_list world;
-
-//     auto checker = make_shared<checker_texture>(0.32, color(.2, .3, .1), color(.9, .9, .9));
-
-//     world.add(make_shared<sphere>(point3(0,-10, 0), 10, make_shared<lambertian>(checker)));
-//     world.add(make_shared<sphere>(point3(0, 10, 0), 10, make_shared<lambertian>(checker)));
-
-//     camera cam;
-
-//     cam.aspect_ratio = 16.0 / 9.0;
-//     cam.image_width = 400;
-//     cam.samples_per_pixel = 10;
-//     cam.max_depth = 10;
-
-//     cam.vfov = 20;
-//     cam.lookfrom = point3(13,2,3);
-//     cam.lookat = point3(0,0,0);
-//     cam.vup = vec3(0,1,0);
-
-//     cam.defocus_angle = 0;
-
-//     cam.render(world);
-// }
-
-// void earth() {
-//     auto earth_texture = make_shared<image_texture>("earthmap1k.jpg");
-//     auto earth_surface = make_shared<lambertian>(earth_texture);
-//     auto globe = make_shared<sphere>(point3(0,0,0), 2, earth_surface);
-
-//     camera cam;
-
-//     cam.aspect_ratio = 16.0 / 9.0;
-//     cam.image_width = 400;
-//     cam.samples_per_pixel = 10;
-//     cam.max_depth = 10;
-
-//     cam.vfov = 45;
-//     cam.lookfrom = point3(0,0,12);
-//     cam.lookat = point3(0,0,0);
-//     cam.vup = vec3(0,1,0);
-
-//     cam.defocus_angle = 0;
-
-//     cam.render(hittable_list(globe));
-// }
+    return point3(x, y, z);
+}
 
 void solar_system() {
     hittable_list world;
@@ -119,54 +56,54 @@ void solar_system() {
     // Create a bright yellow-orange light for the sun
     auto sun_texture = make_shared<image_texture>("sunmap.png", 20.0);
     auto sun_surface = make_shared<diffuse_light>(sun_texture); // Bright yellow-orange light
-    auto sun = make_shared<sphere>(point3(-1200,0,0), 1100, sun_surface);
+    auto sun = make_shared<sphere>(point3(SUN_X, SUN_Y, SUN_Z), 550, sun_surface);
     world.add(sun);
 
     // Add a large sphere with an inward-facing stars texture as the background
     auto stars_texture = make_shared<image_texture>("stars_background.jpg");
     auto stars_material = make_shared<diffuse_light>(stars_texture);
     // Make the sphere large enough to encompass the scene, with normals pointing inward
-    auto stars_sphere = make_shared<sphere>(point3(0, 0, -600), 5000, stars_material);
+    auto stars_sphere = make_shared<sphere>(point3(SUN_X, SUN_Y, SUN_Z), 5000, stars_material);
     world.add(stars_sphere);
 
     auto mercury_texture = make_shared<image_texture>("mercurymap.jpg");
     auto mercury_surface = make_shared<lambertian>(mercury_texture);
-    auto mercury = make_shared<sphere>(point3(200, 20, 0), 40, mercury_surface);
+    auto mercury = make_shared<sphere>(orbit_pos(mercury_orbit, current_time), 40, mercury_surface);
     world.add(mercury);
     
     auto venus_texture = make_shared<image_texture>("venusmap.jpg");
     auto venus_surface = make_shared<lambertian>(venus_texture);
-    auto venus = make_shared<sphere>(point3(380, -30, -50), 95, venus_surface);
+    auto venus = make_shared<sphere>(orbit_pos(venus_orbit, current_time), 95, venus_surface);
     world.add(venus);
 
     auto earth_texture = make_shared<image_texture>("earthmap1k.jpg");
     auto earth_surface = make_shared<lambertian>(earth_texture);
-    auto earth = make_shared<sphere>(point3(730, 25, 150), 100, earth_surface);
+    auto earth = make_shared<sphere>(orbit_pos(earth_orbit, current_time), 100, earth_surface);
     world.add(earth);
 
     auto mars_texture = make_shared<image_texture>("marsmap.jpg");
     auto mars_surface = make_shared<lambertian>(mars_texture);
-    auto mars = make_shared<sphere>(point3(920, -20, 0), 85, mars_surface);
+    auto mars = make_shared<sphere>(orbit_pos(mars_orbit, current_time), 85, mars_surface);
     world.add(mars);
 
     auto jupiter_texture = make_shared<image_texture>("jupitermap.jpg");
     auto jupiter_surface = make_shared<lambertian>(jupiter_texture);
-    auto jupiter = make_shared<sphere>(point3(1320, 30, 0), 240, jupiter_surface);
+    auto jupiter = make_shared<sphere>(orbit_pos(jupiter_orbit, current_time), 240, jupiter_surface);
     world.add(jupiter);
 
     auto saturn_texture = make_shared<image_texture>("saturnmap.jpg");
     auto saturn_surface = make_shared<lambertian>(saturn_texture);
-    auto saturn = make_shared<sphere>(point3(1820, -25, 0), 210, saturn_surface);
+    auto saturn = make_shared<sphere>(orbit_pos(saturn_orbit, current_time), 210, saturn_surface);
     world.add(saturn);
 
     auto uranus_texture = make_shared<image_texture>("uranusmap.jpg");
     auto uranus_surface = make_shared<lambertian>(uranus_texture);
-    auto uranus = make_shared<sphere>(point3(2220, 15, 100), 150, uranus_surface);
+    auto uranus = make_shared<sphere>(orbit_pos(uranus_orbit, current_time), 150, uranus_surface);
     world.add(uranus);
 
     auto neptune_texture = make_shared<image_texture>("naptunemap.jpg");
     auto neptune_surface = make_shared<lambertian>(neptune_texture);
-    auto neptune = make_shared<sphere>(point3(2770, -10, -200), 130, neptune_surface);
+    auto neptune = make_shared<sphere>(orbit_pos(neptune_orbit, current_time), 130, neptune_surface);
     world.add(neptune);
 
     camera cam;
@@ -178,8 +115,8 @@ void solar_system() {
     cam.background = color(0,0,0);
 
     cam.vfov = 45;
-    cam.lookfrom = point3(1350, 0, 2000);    // Pull back along Z axis, centered on system
-    cam.lookat = point3(1350, 0, 0);         // Looking toward center of x-axis line
+    cam.lookfrom = point3(-2400, 2500, 3500);    // Pull back along Z axis, centered on system
+    cam.lookat = point3(-1200, 0, 0);         // Looking toward center of x-axis line
     cam.vup = vec3(0, 1, 0);
 
     cam.defocus_angle = 0.0;
