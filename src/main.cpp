@@ -122,20 +122,12 @@ void solar_system() {
     auto sun = make_shared<sphere>(point3(-1200,0,0), 1100, sun_surface);
     world.add(sun);
 
-    // Add random stars in the background
-    auto star_material = make_shared<diffuse_light>(color(1.0, 1.0, 1.0));
-    for (int i = 0; i < 1000; i++) {
-        // Random position in a large sphere around the solar system
-        double theta = random_double(0, 2*pi);
-        double phi = random_double(0, pi);
-        double r = random_double(3000, 5000); // Distance from center
-        
-        double x = r * sin(phi) * cos(theta);
-        double y = r * sin(phi) * sin(theta);
-        double z = r * cos(phi);
-        
-        world.add(make_shared<sphere>(point3(x,y,z), 10, star_material));
-    }
+    // Add a large sphere with an inward-facing stars texture as the background
+    auto stars_texture = make_shared<image_texture>("stars_background.jpg");
+    auto stars_material = make_shared<diffuse_light>(stars_texture);
+    // Make the sphere large enough to encompass the scene, with normals pointing inward
+    auto stars_sphere = make_shared<sphere>(point3(0, 0, -600), 5000, stars_material);
+    world.add(stars_sphere);
 
     auto mercury_texture = make_shared<image_texture>("mercurymap.jpg");
     auto mercury_surface = make_shared<lambertian>(mercury_texture);
@@ -181,7 +173,7 @@ void solar_system() {
 
     cam.aspect_ratio = 16.0 / 9.0;
     cam.image_width = 500;
-    cam.samples_per_pixel = 10;
+    cam.samples_per_pixel = 8000;
     cam.max_depth = 50;
     cam.background = color(0,0,0);
 
