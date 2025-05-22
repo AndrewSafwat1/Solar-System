@@ -1,3 +1,0 @@
-click build button from cmake on right side bar in vscode
-cd build
-.\inOneWeekend.exe > image.ppm

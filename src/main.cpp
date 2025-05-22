@@ -125,7 +125,7 @@ void solar_system(long current_time, point3 lookfrom, point3 lookat, vec3 vup) {
 }
 
 int main() {
-    std::ifstream config_file("config.json");
+    std::ifstream config_file("../config.json");
     if (!config_file) {
         std::cerr << "Failed to open config.json" << std::endl;
         return 1;
