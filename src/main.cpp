@@ -29,19 +29,15 @@ Position uranus_pos  = { 3020, 0, 0 };
 Position neptune_pos = { 3470, 0, 0 };
 
 point3 orbit_pos(const Position& o, double t) {
-    // Calculate the radius and initial angle from the initial position (relative to sun)
     double dx = o.initial_x - sun_pos.initial_x;
     double dz = o.initial_z - sun_pos.initial_z;
     double radius = sqrt(dx * dx + dz * dz);
     double initial_angle = atan2(dz, dx);
 
-    // Define an orbital period (in arbitrary time units) based on radius
     double period = 500.0 + radius * 0.5;
 
-    // Calculate current angle based on time and period
     double angle = initial_angle + 2 * M_PI * (t / period);
 
-    // Calculate new position in the XZ plane, keep Y constant, and offset by sun's position
     double x = sun_pos.initial_x + radius * cos(angle);
     double z = sun_pos.initial_z + radius * sin(angle);
     double y = o.initial_y + sun_pos.initial_y; 
@@ -51,27 +47,21 @@ point3 orbit_pos(const Position& o, double t) {
 
 point3 moon_pos(double t) {
     point3 earth_curr = orbit_pos(earth_pos, t);
-    // Moon's orbital parameters
     double dx = 100;
     double dz = 100;
     double radius = sqrt(dx * dx + dz * dz);
     double initial_angle = atan2(dz, dx);
 
-    // Moon's orbital period
     double period = 500.0 + radius * 0.5;
 
-    // Current angle
     double angle = initial_angle + 2 * M_PI * (t / period);
 
-    // Moon's orbital tilt (about 5 degrees)
     double tilt_rad = 5.0 * M_PI / 180.0;
 
-    // Position in moon's orbital plane (before tilt)
     double x_orb = radius * cos(angle);
     double y_orb = 0;
     double z_orb = radius * sin(angle);
 
-    // Apply tilt: rotate around X axis by tilt_rad
     double y_tilted = y_orb * cos(tilt_rad) - z_orb * sin(tilt_rad);
     double z_tilted = y_orb * sin(tilt_rad) + z_orb * cos(tilt_rad);
 
@@ -85,9 +75,8 @@ point3 moon_pos(double t) {
 void solar_system(long current_time, point3 lookfrom, point3 lookat, vec3 vup) {
     hittable_list world;
 
-    // Create a bright yellow-orange light for the sun
     auto sun_texture = make_shared<image_texture>("sunmap.png", 20.0);
-    auto sun_surface = make_shared<diffuse_light>(sun_texture); // Bright yellow-orange light
+    auto sun_surface = make_shared<diffuse_light>(sun_texture);
     auto sun = make_shared<sphere>(point3(sun_pos.initial_x, sun_pos.initial_y, sun_pos.initial_z), 550, sun_surface);
     world.add(sun);
 
@@ -147,13 +136,13 @@ void solar_system(long current_time, point3 lookfrom, point3 lookat, vec3 vup) {
 
     cam.aspect_ratio = 16.0 / 9.0;
     cam.image_width = 500;
-    cam.samples_per_pixel = 10;
+    cam.samples_per_pixel = 8000;
     cam.max_depth = 50;
     cam.background = color(0,0,0);
 
     cam.vfov = 45;
-    cam.lookfrom = lookfrom;    // Pull back along Z axis, centered on system
-    cam.lookat = lookat;         // Looking toward center of x-axis line
+    cam.lookfrom = lookfrom;
+    cam.lookat = lookat;
     cam.vup = vup;
 
     cam.defocus_angle = 0.0;
