@@ -1,2 +1,0 @@
-C:/Users/Armia/Documents/GitHub/Solar-System/build/CMakeFiles/CMakeScratch/TryCompile-grnjfo/CMakeFiles/cmTC_613dd.dir
-C:/Users/Armia/Documents/GitHub/Solar-System/build/CMakeFiles/CMakeScratch/TryCompile-grnjfo/CMakeFiles/ALL_BUILD.dir
