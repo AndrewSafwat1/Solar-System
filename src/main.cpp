@@ -5,10 +5,11 @@
 #include "hittable_list.h"
 #include "sphere.h"
 #include "texture.h"
+#include <fstream>
+#include "external/json.hpp"
 
+using json = nlohmann::json;
 #define M_PI 3.14159265358979323846
-
-long current_time = 2000;
 
 
 struct Orbit {
@@ -50,7 +51,7 @@ point3 orbit_pos(const Orbit& o, double t) {
     return point3(x, y, z);
 }
 
-void solar_system() {
+void solar_system(long current_time, point3 lookfrom, point3 lookat, vec3 vup) {
     hittable_list world;
 
     // Create a bright yellow-orange light for the sun
@@ -115,19 +116,33 @@ void solar_system() {
     cam.background = color(0,0,0);
 
     cam.vfov = 45;
-    cam.lookfrom = point3(-2400, 2500, 3500);    // Pull back along Z axis, centered on system
-    cam.lookat = point3(-1200, 0, 0);         // Looking toward center of x-axis line
-    cam.vup = vec3(0, 1, 0);
+    cam.lookfrom = lookfrom;    // Pull back along Z axis, centered on system
+    cam.lookat = lookat;         // Looking toward center of x-axis line
+    cam.vup = vup;
 
     cam.defocus_angle = 0.0;
     cam.render(world);
 }
 
 int main() {
-    switch (4) {
-        // case 1: bouncing_spheres(); break;
-        // case 2: checkered_spheres(); break;
-        // case 3: earth(); break;
-        case 4: solar_system(); break;
+    std::ifstream config_file("config.json");
+    if (!config_file) {
+        std::cerr << "Failed to open config.json" << std::endl;
+        return 1;
     }
+
+    json config;
+    config_file >> config;
+
+    long current_time = config["time"];
+
+    auto pos = config["camera"]["position"];
+    auto look = config["camera"]["look_at"];
+    auto up = config["camera"]["up"];
+
+    point3 lookfrom(pos[0], pos[1], pos[2]);
+    point3 lookat(look[0], look[1], look[2]);
+    vec3 vup(up[0], up[1], up[2]);
+
+    solar_system(current_time, lookfrom, lookat, vup);
 }
