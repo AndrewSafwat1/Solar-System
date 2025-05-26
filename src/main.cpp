@@ -136,7 +136,7 @@ void solar_system(long current_time, point3 lookfrom, point3 lookat, vec3 vup) {
 
     cam.aspect_ratio = 16.0 / 9.0;
     cam.image_width = 500;
-    cam.samples_per_pixel = 8000;
+    cam.samples_per_pixel = 1000;
     cam.max_depth = 50;
     cam.background = color(0,0,0);
 
